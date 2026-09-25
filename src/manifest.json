@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Highlight Paragraphs",
+  "version": "1.0.0",
+  "description": "Destaca todos os parágrafos da página atual.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Destacar parágrafos"
+  }
+}
