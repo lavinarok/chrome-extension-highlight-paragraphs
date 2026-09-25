@@ -8,8 +8,8 @@
     style.id = STYLE_ID;
     style.textContent = `
       .${HIGHLIGHT_CLASS} {
-        background-color: #fff59d !important;
-        outline: 2px solid #f9a825 !important;
+        background-color: #ffa4e8 !important;
+        outline: 2px solid #f9259a !important;
       }
     `;
 
