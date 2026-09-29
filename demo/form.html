@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de teste da extensão</title>
+
+  <style>
+    body {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    #activity {
+      margin-top: 24px;
+      padding: 12px;
+      background: #f1f3f4;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Formulário de teste</h1>
+
+  <p>
+    Esta página existe apenas para testar interações da extensão com o DOM.
+  </p>
+
+  <form>
+    <label>
+      Nome
+      <input id="name" type="text">
+    </label>
+
+    <label>
+      E-mail
+      <input id="email" type="email">
+    </label>
+
+    <label>
+      Assunto
+      <input id="subject" type="text">
+    </label>
+
+    <label>
+      Mensagem
+      <textarea id="message"></textarea>
+    </label>
+  </form>
+
+  <p id="activity">
+    Nenhum evento de preenchimento detectado.
+  </p>
+
+  <script>
+    const activity = document.querySelector("#activity");
+    const fields = document.querySelectorAll("input, textarea");
+
+    fields.forEach((field) => {
+      field.addEventListener("input", () => {
+        activity.textContent =
+          `Evento input detectado em #${field.id}: ${field.value}`;
+      });
+    });
+  </script>
+</body>
+</html>

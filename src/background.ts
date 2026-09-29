@@ -1,5 +1,10 @@
 chrome.runtime.onMessage.addListener((message) => {
-  if (message?.type !== "HIGHLIGHT_PARAGRAPHS") {
+  const supportedActions = [
+    "HIGHLIGHT_PARAGRAPHS",
+    "FILL_TEST_FORM"
+  ];
+
+  if (!supportedActions.includes(message?.type)) {
     return;
   }
 
@@ -14,12 +19,22 @@ chrome.runtime.onMessage.addListener((message) => {
         return;
       }
 
+      const scriptFile =
+        message.type === "HIGHLIGHT_PARAGRAPHS"
+          ? "content/highlight.js"
+          : "content/fill-form.js";
+
       await chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content/highlight.js"]
+        target: {
+          tabId: tab.id
+        },
+        files: [scriptFile]
       });
     } catch (error) {
-      console.error("Não foi possível destacar os parágrafos:", error);
+      console.error(
+        "Não foi possível executar a ação:",
+        error
+      );
     }
   })();
 });

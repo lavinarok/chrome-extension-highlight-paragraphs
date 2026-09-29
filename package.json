@@ -6,7 +6,8 @@
     "clean": "node scripts/clean.mjs",
     "compile": "tsc",
     "copy-static": "node scripts/copy-static.mjs",
-    "build": "npm run clean && npm run compile && npm run copy-static"
+    "build": "npm run clean && npm run compile && npm run copy-static",
+    "demo": "node scripts/serve-demo.mjs"
   },
   "repository": {
     "type": "git",

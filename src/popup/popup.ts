@@ -7,6 +7,11 @@ const colorOptions =
 const statusElement =
   document.querySelector<HTMLParagraphElement>("#status");
 
+const fillFormButton =
+  document.querySelector<HTMLButtonElement>(
+    "#fill-form-button"
+  );
+
 async function applyHighlight(color: string): Promise<void> {
   await chrome.storage.local.set({
     highlightColor: color
@@ -63,5 +68,19 @@ colorOptions.forEach((option) => {
 colorInput?.addEventListener("change", async () => {
   await applyHighlight(colorInput.value);
 });
+
+fillFormButton?.addEventListener(
+  "click",
+  async () => {
+    await chrome.runtime.sendMessage({
+      type: "FILL_TEST_FORM"
+    });
+
+    if (statusElement) {
+      statusElement.textContent =
+        "✓ Preenchimento solicitado";
+    }
+  }
+);
 
 void loadSavedColor();
