@@ -1,14 +1,25 @@
-chrome.action.onClicked.addListener(async (tab) => {
-  if (tab.id === undefined) {
+chrome.runtime.onMessage.addListener((message) => {
+  if (message?.type !== "HIGHLIGHT_PARAGRAPHS") {
     return;
   }
 
-  try {
-    await chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ["content/highlight.js"]
-    });
-  } catch (error) {
-    console.error("Não foi possível destacar os parágrafos:", error);
-  }
+  void (async () => {
+    try {
+      const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      });
+
+      if (tab.id === undefined) {
+        return;
+      }
+
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content/highlight.js"]
+      });
+    } catch (error) {
+      console.error("Não foi possível destacar os parágrafos:", error);
+    }
+  })();
 });

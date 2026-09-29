@@ -5,13 +5,15 @@
   "description": "Destaca todos os parágrafos da página atual.",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "action": {
-    "default_title": "Destacar parágrafos"
+    "default_title": "Destacar parágrafos",
+    "default_popup": "popup/popup.html"
   }
 }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlight Paragraphs</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <main class="popup">
+    <header>
+      <h1>Highlight Paragraphs</h1>
+      <p>Escolha uma cor para destacar os parágrafos.</p>
+    </header>
+
+    <section>
+      <span class="label">Cores rápidas</span>
+
+      <div class="color-options">
+        <button
+          class="color-option"
+          data-color="#fff59d"
+          style="--color: #fff59d"
+          title="Amarelo"
+          aria-label="Amarelo">
+        </button>
+
+        <button
+          class="color-option"
+          data-color="#a5d6a7"
+          style="--color: #a5d6a7"
+          title="Verde"
+          aria-label="Verde">
+        </button>
+
+        <button
+          class="color-option"
+          data-color="#90caf9"
+          style="--color: #90caf9"
+          title="Azul"
+          aria-label="Azul">
+        </button>
+
+        <button
+          class="color-option"
+          data-color="#f8bbd0"
+          style="--color: #f8bbd0"
+          title="Rosa"
+          aria-label="Rosa">
+        </button>
+
+        <button
+          class="color-option"
+          data-color="#ffcc80"
+          style="--color: #ffcc80"
+          title="Laranja"
+          aria-label="Laranja">
+        </button>
+
+        <button
+          class="color-option"
+          data-color="#ce93d8"
+          style="--color: #ce93d8"
+          title="Roxo"
+          aria-label="Roxo">
+        </button>
+      </div>
+    </section>
+
+    <section class="custom-color">
+      <label for="highlight-color">
+        Cor personalizada
+      </label>
+
+      <input
+        id="highlight-color"
+        type="color"
+        value="#fff59d"
+      >
+    </section>
+
+    <p id="status" class="status" aria-live="polite"></p>
+  </main>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
